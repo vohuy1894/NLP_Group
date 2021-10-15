@@ -1,11 +1,11 @@
-# NLP_Group
-
+# Pulitzer Prize Helper
 ### CSCE 5290: Natural Language Processing
+Repository for Group Project
+
 ### Team Members:
 * Wesley DeLoach
 * Nikhil Gaur
 * Richard Tran
 * Huy Vo
 
-### Repository for Group Project: Pulitzer Prize Helper
 Please visit our wiki page for more info about our project!
