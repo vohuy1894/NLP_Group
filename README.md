@@ -7,4 +7,6 @@
 * Richard Tran
 * Huy Vo
 
-Please visit our wiki page for more info!
+### Repository for Group Project
+### Pulitzer Prize Helper
+Please visit our wiki page for more info about our project!
