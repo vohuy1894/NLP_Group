@@ -8,7 +8,7 @@ min_name = 2
 max_name = 20
 min_pw = 10
 max_pw = 100
-
+#Sign up form class for user input with validators
 class SignUpForm(FlaskForm):
     first_name = StringField('First name', validators=[DataRequired(), Length(min=min_name, max=max_name)])
     last_name = StringField('Last name', validators=[DataRequired(), Length(min=min_name, max=max_name)])

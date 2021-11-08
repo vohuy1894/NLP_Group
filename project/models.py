@@ -5,7 +5,8 @@ from flask_login import UserMixin
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-    
+
+#User model for database 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
     email = db.Column(db.String(100), unique=True)

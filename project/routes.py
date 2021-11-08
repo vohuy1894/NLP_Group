@@ -28,15 +28,17 @@ def index():
     db.create_all()
     return render_template('index.html')
 
+#Home route
 @app.route("/home")
 def home():
     return render_template('index.html')
 
+#Sign up route
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignUpForm()
     if form.validate_on_submit():
-        hash_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        hash_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8') #user bcrypt to hash password
         user = User(fname=form.first_name.data, lname=form.last_name.data, email=form.email.data,
                     password=hash_password, user_perk=250, consumed=0, burned=0, calories=0)
         db.session.add(user)
@@ -46,10 +48,7 @@ def signup():
     return render_template('signup.html', title='Register', form=form)
 
 
-# Sign up function for user with fields
-# and query input information to database
-# if the input match, the user will log in.
-# Otherwise, error message will display
+#Sign in route
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     form = SignInForm()
