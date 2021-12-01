@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script scr="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	function runModel(){
+		javascript_data = {text: document.getElementById("input").value,
+						   model_selection: document.querySelector('input[name="model"]:checked').value}
+		console.log(javascript_data)
+		
+		document.getElementById("a").value = javascript_data.text
+		document.getElementById("b").value = javascript_data.model_selection
+		
+		document.getElementById('postData').submit()
+	}
+	</script>
+
+</head>
+
+<body>
+	<div>
+		<input type="radio" id="Alice" name="model" value="Alice In Wonderland">
+		<label for="Alice">Alice In Wonderland</label>
+		<br>
+
+		<input type="radio" id="Sherlock" name="model" value="Sherlock Holmes">
+		<label for="Sherlock">Sherlock Holmes</label>
+		<br>
+
+		<input type="radio" id="Genesis" name="model" value="Genesis">
+		<label for="Genesis">Genesis-King James Version</label>
+		<br>
+		<br>
+	</div>
+
+	<label for="input">Input text here:</label>
+	<input type="text" id="input" name="input">
+	<br><br>
+
+	<button type="button" onclick="runModel()">Generate Text!</button>
+	<br><br>
+	
+	<p>{{ output_text }}</p>
+	
+	<form id='postData' method='post' action='adjust_text' style='display:none'>
+		<label>text <input name="a" id="a"></label>
+		<label>model_selection <input name="b" id="b"></label>
+	</form>
+</body>
+
+
+</html>
