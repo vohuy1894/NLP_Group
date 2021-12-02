@@ -31,3 +31,7 @@ class SignInForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Sign In')
+
+class TextForm(FlaskForm):
+    text = StringField("Input:", [DataRequired()])
+    submit = SubmitField('Submit')

@@ -1,7 +1,8 @@
 from __future__ import print_function
+from pyexpat import model
 from flask import redirect, url_for, render_template, flash, request, session, make_response
 from project import app, db, bcrypt
-from project.forms import SignInForm, SignUpForm
+from project.forms import SignInForm, SignUpForm, TextForm
 from project.models import User
 from flask_login import current_user, login_user, current_user, logout_user, login_required
 from time import time
@@ -9,7 +10,11 @@ from datetime import date
 import json
 import sys
 import os
+from transformers import pipeline
+import torch
 
+generator = pipeline('text-generation', model='nlrgroup/Alice_fine_tuned', tokenizer='xlnet-base-cased')
+output_text = "Result here"
 # Get the user database for routes
 @app.shell_context_processor
 def make_shell_context():
@@ -26,6 +31,8 @@ def protected():
 @app.route("/")
 def index():
     db.create_all()
+    # result = generator(text)[0]['generated_text']
+    # print(result)
     return render_template('index.html')
 
 #Home route
@@ -62,3 +69,14 @@ def signin():
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('signin.html', form=form)
+
+@app.route('/alice')
+def alice():
+    return render_template('xlnet_base_cased.html', output_text=output_text)
+
+@app.route('/aft', methods=['GET', 'POST'])
+def aft():
+    text = request.form['a']
+    output_text = generator(text, max_length=200)[0]['generated_text']
+    print(output_text)
+    return render_template('xlnet_base_cased.html', output_text=output_text)

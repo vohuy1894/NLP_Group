@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+{%block title%}
+  <title>Home</title>
+{%endblock%}
+<body>
+  {%block content%}
+  <!-- Main Content -->
+  
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-15 col-md-20 mx-auto">
+        <form action="{{ url_for('aft') }}" method="post">
+            <input type="text" name="a" placeholder="Enter text here"/>
+            <button type="submit">Text Generate</button>
+        </form>
+    
+       <br>
+       <br>
+       {{ output_text }}
+      
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+ 
+{%endblock%}
+</body>
+
+</html>
