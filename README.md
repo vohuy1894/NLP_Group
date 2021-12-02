@@ -8,4 +8,12 @@ Repository for Group Project
 * Richard Tran
 * Huy Vo
 
+### Requirements:
+* torch && torchvision
+* Flask
+### Instrutions (In terminal use these commands):
+* export FLASK_APP=project
+* flask run
+
+
 Please visit our wiki page for more info about our project!
